@@ -1,0 +1,381 @@
+body{margin: 0;padding: 0; font-family: Verdana;}
+.fondo-cuadriculado{
+	background-image: linear-gradient(white 2px, transparent 2px),
+	linear-gradient(90deg, white 2px, transparent 2px),
+	linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
+	linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
+	background-size:100px 100px, 100px 100px, 20px 20px, 20px 20px;
+	background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px
+}
+.dinamico{
+	animation: mover linear infinite 40s;
+	transition: background-position ease-out;
+}
+@keyframes mover{
+	0% 	{background-position: 0px}
+	50% {background-position-y: 100px;}
+	100% {background-position-x: 400px;}
+}
+.pantalla{
+	min-width: 320px;
+	min-height: 320px;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+/*GENERICOS*/
+.volver{
+	position: fixed;
+	margin-right: 0.5em;
+	margin-top: 0.5em;
+	cursor: pointer;
+	color: white;
+	font-weight: bolder;
+	font-size: 2em;
+	float: right;
+	width: 2em;
+	height: 2em;
+	border: solid 5px red; 
+	border-radius: 1em;
+}
+.boton{
+	background-color: white;
+	display: inline-block;
+	padding: 1em;
+}
+.boton:hover{
+	background-color: rgba(255,255,255,0.4);
+	cursor: pointer;
+}
+.ver-reglas:hover{
+	.juego
+}
+.cubo{ position: relative;}
+.dado{
+	background-color: transparent !important;
+	font-weight: bold;
+	display: inline-block;
+	position: relative;
+}
+.bolsa .dado{
+	cursor: move;
+	font-size: 12px;
+	margin: 3em 3em !important;
+	display: inline-block !important;
+}
+
+.desempate .dado{
+	font-size: 9px;
+	margin: 3em -7.125em;
+}
+
+.casilla .dado{
+	margin-top: 1.75em;
+	margin-left: -6em;
+	display: block !important;
+	font-size: 12px;
+}
+
+.casilla .dado .cara-top > div {visibility: hidden;}
+/*
+.casilla .dado:first-child >.cara-top:first-child > div {visibility: visible;}
+.casilla .dado .cubo:first-child > .cara-top:first-child > div {
+	visibility: visible;
+	background-color: yellow
+}*/
+
+.cara-der, .cara-izq {
+	width: 3em;
+	height: 3em; 
+}
+.cara-der, .cara-izq, .cara-top {
+	position: absolute;
+}
+
+.cara-der, .cara-izq, .cara-top div{
+	border: solid 1px white;
+}
+
+.cara-izq {
+	transform: skewY(30deg);
+}
+.cara-der {
+	transform: skewY(-30deg);
+	left: 3em;
+}
+.cara-top div {
+	transform: skewY(-30deg) scaleY(1.16);
+	font-size: 0.862em;
+	height: 3.5em;
+	width:  3.75em;
+}
+.cara-top {
+	transform: rotate(60deg);
+	top: -2.25em;
+	left:1.5em;
+}
+.oculto{
+	display: none;
+}
+/*GENERICOS FIN*/
+/*PANTALLA PRINCIPAL*/
+.principal{
+	background-color: rgba(0,0,0,0.5);
+	text-align: center;
+}
+.logo{
+	color: #226699;
+	font-family: Arial;
+	font-size: 10em;
+	margin: 5% auto;
+	text-shadow:
+   -3px -3px 0 white,
+    3px -3px 0 white,
+   -3px 3px 0 white,
+    3px 3px 0 white;
+	text-align: center;
+	width: 90%;
+    /*transform: rotate(-5deg);*/
+}
+.menu{
+	width: 30%;
+	margin: 0 auto;
+	text-align: center;
+}
+.menu .boton{
+	width: 90%;
+}
+.iniciar-juego{
+	border-color: blue;
+}
+.ver-reglas{
+	border-color: red; 
+}
+/*PANTALLA PRINCIPAL FIN*/
+/*PANTALLA REGLAS*/
+.reglas{
+	background-color: rgba(255,0,0,0.5);
+	overflow: auto;
+	color: white;
+}
+.reglas h1{
+	text-align: center;
+	font-size: 3em;
+}
+.reglas ol li{
+	font-size: 1.25em;
+	text-align: justify;
+	width: 80%;
+	margin: 0 auto 15px;
+}
+/*PANTALLA REGLAS FIN*/
+/*PANTALLA JUEGO*/
+.juego{
+	text-align: center;
+	background-color: rgba(255,255,255,0.1);
+}
+
+.juego *{
+	display: inline-block;
+}
+
+.encabezado, .tablero, .mesa{
+	width: 100%;
+	vertical-align: top;
+}
+
+.encabezado{
+	background-color: rgba(255,255,255,0.5);
+	text-align: left;
+	height: 14.8%; /*Por el borde*/
+	border-bottom: solid 2px rgba(0,0,0,0.7);
+}
+
+.bolsa, .desempate, .opciones{
+	height: 100%;
+	vertical-align: top;
+}
+.opciones{
+	border-left: solid 2px rgba(0,0,0,0.7);
+	width: 15%;
+	float: right;
+	text-align: center;
+}
+
+.bolsa{
+	text-align: center;
+	width: 60%;
+	border-right: solid 2px rgba(0,0,0,0.7);
+}
+
+.desempate{
+	text-align: center;
+	width: 10%;
+}
+.desempate label{
+	width: 100%;
+	background-color: green;
+}
+
+.tablero{
+	height: 85%;
+	width: 100%;
+}
+
+.tablero *{
+	vertical-align: top;
+}
+
+.jugador{
+	height: 100%;
+}
+.girar{
+	cursor: pointer;
+	opacity: 0.7;
+}
+.girar:hover{
+	opacity: 0.95;
+}
+
+.plano{
+	text-align: center;
+	border: solid 1em white;
+	border-radius: 1em;
+	background-color: #269;
+	text-align: center;
+	margin-top: 1%;
+	padding: 1% 0;
+	height: 90%;
+	width: 85%;/*Por el margen*/
+}
+
+.jugador{width: 23%; height: 100%;}
+
+.horizontal{
+	width: 50%;
+	margin-bottom: 1.5em;
+	height: 45%;
+}
+
+
+.casilla{
+	overflow: auto;
+	vertical-align: top;
+	display: inline-block;
+	border: 1px solid rgba(255,255,255, 0.5);	
+}
+
+.zonaContenedora{
+	background-color: rgba(255,255,255, 0.5) !important;
+}
+
+.plano .casilla {width: 48%; height: 33%;}
+
+.bloqueada{
+	background-color: rgba(128,128,128,0.4);
+	background-image: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(128,128,128,.5) 8px, rgba(128,128,128,.3) 16px);
+}
+
+.dados-requeridos {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    float: left;
+    width: 1em;
+    font-size: 0.7em;
+}
+/*PANTALLA JUEGO FIN*/
+/*PANTALLA PREMIACION*/
+.premiacion{
+	background-color: rgba(0,0,0,0.3);
+}
+/*ANIMACIONES Y EFECTOS*/
+.inclinado .casilla{
+	overflow: visible;
+}
+.inclinado .casilla .dado{
+	font-size: 1.5em;
+    transform: rotate(-7.5deg) skewX(30deg) skewY(0deg) scaleY(0.87);
+}
+.inclinado{
+	transform: rotate(15deg) skewX(-30deg) skewY(0deg) scaleY(0.87);
+}
+.inclinado .casilla .dado .cara-top > div {visibility: visible;}
+
+.girable{
+	animation-name: girar;
+    animation-play-state: paused;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+}
+
+@keyframes girar{
+  from {transform: rotateY(0deg);}
+  to {transform: rotateY(360deg);}
+}
+.animada{
+	animation-duration: 1s;
+	animation-name: brillar;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+@keyframes brillar{
+	from{background-color: rgba(240,240,240,0.1);}
+	66% {background-color: rgba(240,240,240,0.4);}
+	to  {background-color: rgba(240,240,240,0.1);}
+}
+
+[draggable], .dado, .plano, .jugador, .pantalla{
+  user-select: none;
+}
+
+
+/*Colores y materiales*/
+.azul{background-color:#226699;}
+.rojo{background-color: #BF2A47;}
+.dorado{background-color: #DBB000;}
+.verde-opaco{background-color: #80C080;}
+.blanco50{background-color: rgba(255,255,255,0.5);}
+.negro50{background-color: rgba(0,0,0,0.5);}
+.rojo50{background-color: rgba(255,0,0,0.5);}
+.cafe{background-color: #D5CEA4}
+
+.madera{
+	background-color: #C05501;
+	/*background-image: linear-gradient(90deg, rgba(255,255,255,.07) 50%, transparent 50%),
+	linear-gradient(90deg, rgba(255,255,255,.13) 50%, transparent 50%),
+	linear-gradient(90deg, transparent 50%, rgba(255,255,255,.17) 50%),
+	linear-gradient(90deg, transparent 50%, rgba(255,255,255,.19) 50%);
+	background-size: 13px, 29px, 37px, 53px;*/
+}
+.cristal{
+	background-color: rgba(255,255,255,0.75);
+	color: black;
+	/*background-image: 
+	background-color: rgba(255,255,255,0.3); 
+	linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+	linear-gradient(#eee .1em, transparent .1em);
+	background-size: 100% .9em;*/
+}
+.piedra{
+	color: white;
+	background-color: black;
+	/*
+	background-color: #777777;
+	background-image: linear-gradient(335deg, #333333 12px, transparent 12px),
+	linear-gradient(155deg, #444444 12px, transparent 12px),
+	linear-gradient(335deg, #333333 12px, transparent 12px),
+	linear-gradient(155deg, #444 12px, transparent 12px);
+	background-size: 29px 29px;	
+	background-position: 0px 1px, 2px 17px, 15px 15px, 17px 3px;*/
+}
+.reciclado{
+	background-color: #63E86B;
+	/*background:
+	radial-gradient(circle at 0% 50%, rgba(20, 100, 30, 0) 9px, #0F6E2C 10px, rgba(20, 100, 30, 0) 11px) 0px 10px,
+	radial-gradient(at 100% 100%,     rgba(20, 100, 30, 0) 9px, #0F6E2C 10px, rgba(20, 100, 30, 0) 11px),
+	#8a3;
+	background-size: 20px 20px;*/
+}
+
